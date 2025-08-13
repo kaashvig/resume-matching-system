@@ -1,4 +1,5 @@
 Overview
+----------------------------------
 Resume Matcher is an AI-powered application that semantically matches job descriptions to candidate resumes using transformer embeddings and weighted multi-section scoring across job titles, skills, experience, and education. It provides:
 
 A Streamlit interface for quick testing and demos.
@@ -6,8 +7,9 @@ A Streamlit interface for quick testing and demos.
 A FastAPI endpoint for programmatic access.
 
 PostgreSQL + pgvector for fast vector similarity search.
-
+----------------------------------------
 Key Features
+
 Semantic matching with Sentence Transformers (all-MiniLM-L6-v2).
 
 Weighted scoring across titles, skills, experience, and education.
@@ -16,31 +18,33 @@ Location-aware filtering using state and neighboring states.
 
 REST API: POST /match for integration.
 
-
+----------------------------------------
 app.py — Streamlit UI to input a job description and view top matches.
 
 api.py — FastAPI app exposing the POST /match endpoint.
 
-matching2.py — Matching logic: parsing, embeddings, filters, scoring.
-
-db.py — Database connection, schema, and embedding storage utilities.
+backfill_state_column.py — Script to infer/fill missing state from location.
 
 clean_text.py — Text normalization helpers.
 
-backfill_state_column.py — Script to infer/fill missing state from location.
+db.py — Database connection, schema, and embedding storage utilities.
+
+extract_text.py — Utilities to extract plain text from PDF and DOCX files using pdfplumber and python-docx.
+
+groq_extractor.py — Wrapper to call Groq LLM APIs for structured extraction (e.g., skills, titles, experience) from raw resume text.
+
+matching2.py — Matching logic: parsing, embeddings, filters, scoring.
 
 match_resumes.py — CLI utility to run a sample match from terminal.
 
 requirements.txt — Python dependencies for the project.
 
-
-
+resume_parser.py — Parses extracted resume text into structured fields (name, email, phone, skills, education, experience) using rules/LLM prompts.
+----------------------------------------
 Prerequisites
 Python 3.10+
 
 PostgreSQL 14+ with pgvector extension enabled
-
-
 
 Quick Start (Local)
 Create a virtual environment and install dependencies
@@ -87,9 +91,6 @@ create_updated_table()
 
 exit()
 
-(Optional) Load sample data
-
-If sample_resumes.csv is present, write a short ingestion script or use functions in db.py (e.g., insert_resume_into_db) to insert a few records for testing.
 
 Start the API server (FastAPI)
 
