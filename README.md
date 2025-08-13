@@ -35,18 +35,12 @@ requirements.txt — Python dependencies for the project.
 
 
 
-presentation.pptx — Slides describing the problem, solution, and architecture.
-
-sample_resumes.csv — Optional sample data for quick testing.
-
-If file names differ slightly in the codebase, keep the structure concept the same; paths here assume files live in the repository root.
-
 Prerequisites
 Python 3.10+
 
 PostgreSQL 14+ with pgvector extension enabled
 
-Internet access to download the transformer model on first run
+
 
 Quick Start (Local)
 Create a virtual environment and install dependencies
