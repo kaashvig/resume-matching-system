@@ -9,3 +9,5 @@ nltk
 PyPDF2
 spacy
 joblib
+pyresparser
+multipart
